@@ -43,9 +43,9 @@ int main() {
     assert(size(43) == 'L');
     
     // Negative test cases to illustrate edge cases
-    // assert(size(39) == 'S');  // This should not be 'S'
-    // assert(size(43) == 'M');  // This should not be 'M'
-    // assert(size(35) == 'L');  // This should not be 'L'
+    assert(size(39) == 'S');  // This should not be 'S'
+    assert(size(43) == 'M');  // This should not be 'M'
+    assert(size(35) == 'L');  // This should not be 'L'
 
     printf("All is well (maybe!)\n");
     return 0;
