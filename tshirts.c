@@ -27,6 +27,7 @@
 #include <assert.h>
 
 char size(int cms) {
+    char sizeName = '\0';
     if (cms < 38) {
         return 'S';
     } else if (cms <= 42) {  // Adjusted to include 38-42 as 'M'
@@ -34,6 +35,7 @@ char size(int cms) {
     } else {
         return 'L';
     }
+    return sizeName
 }
 
 int main() {
@@ -43,7 +45,7 @@ int main() {
     assert(size(43) == 'L');
     
     // Negative test cases to illustrate edge cases
-    assert(size(39) == 'S');  // This should not be 'S'
+    assert(size(39) == '\0');  // This should not be 'S'
     assert(size(43) == 'M');  // This should not be 'M'
     assert(size(35) == 'L');  // This should not be 'L'
 
