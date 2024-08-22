@@ -12,7 +12,31 @@ int printColorMap() {
     }
     return i * j;
 }
+void TestPrintColorMap() {
+    // Redirect stdout to a string buffer
+    char buffer[1024] = {0};
+    freopen("/dev/null", "a", stdout);
+    setbuf(stdout, buffer);
+    
+    // Call the function
+    int result = printColorMap();
 
+    // Restore stdout
+    freopen("/dev/tty", "a", stdout);
+
+    // Verify key outputs
+    assert(result == 25);
+    assert(strstr(buffer, "0 | White | Blue"));
+    assert(strstr(buffer, "24 | Violet | Slate"));
+    assert(strstr(buffer, "5 | Red | Blue"));
+
+    // Verify line count
+    int lineCount = 0;
+    for (char *p = buffer; *p; p++) lineCount += (*p == '\n');
+    assert(lineCount == 25);
+
+    printf("All test cases passed!\n");
+}
 int main() {
     int result = printColorMap();
     assert(result == 25);
